@@ -1,2 +1,3 @@
-# archetype-api
-api快速搭建原型项目
+#api快速搭建原型项目
+##使用方法发
+  idea:引入地址
