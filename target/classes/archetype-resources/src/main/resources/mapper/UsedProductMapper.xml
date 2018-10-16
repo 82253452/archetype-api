@@ -1,0 +1,24 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="${version}" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${package}.mapper.UsedProductMapper">
+    <resultMap id="BaseResultMap" type="${package}.entity.UsedProduct">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="city_id" jdbcType="INTEGER" property="cityId"/>
+        <result column="set_top" jdbcType="BIT" property="setTop"/>
+        <result column="deleted" jdbcType="BIT" property="deleted"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="num_browse" jdbcType="INTEGER" property="numBrowse"/>
+        <result column="quality" jdbcType="INTEGER" property="quality"/>
+    </resultMap>
+    <resultMap id="DtoResultMap" type="${package}.dto.UsedProductDto" extends="BaseResultMap">
+
+    </resultMap>
+</mapper>

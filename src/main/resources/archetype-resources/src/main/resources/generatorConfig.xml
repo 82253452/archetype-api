@@ -1,0 +1,103 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="${version}" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration ${version}//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="useMapperCommentGenerator" value="false"/>
+
+        <!--通用 Mapper 插件，可以生成带注解的实体类-->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <property name="caseSensitive" value="true"/>
+            <property name="forceAnnotation" value="true"/>
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
+        </plugin>
+        <!--entity-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/java"/>
+            <property name="targetPackage" value="${package}.entity"/>
+            <property name="templatePath" value="file:///D:${symbol_escape}mvnSpace${symbol_escape}base-api${symbol_escape}src${symbol_escape}main${symbol_escape}resources${symbol_escape}tpl${symbol_escape}entity.ftl"/>
+            <property name="mapperSuffix" value=""/>
+            <property name="fileName" value="${symbol_dollar}{tableClass.shortClassName}${symbol_dollar}{mapperSuffix}.java"/>
+        </plugin>
+        <!--dto-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/java"/>
+            <property name="targetPackage" value="${package}.dto"/>
+            <property name="templatePath" value="file:///D:${symbol_escape}mvnSpace${symbol_escape}base-api${symbol_escape}src${symbol_escape}main${symbol_escape}resources${symbol_escape}tpl${symbol_escape}dto.ftl"/>
+            <property name="mapperSuffix" value="Dto"/>
+            <property name="fileName" value="${symbol_dollar}{tableClass.shortClassName}${symbol_dollar}{mapperSuffix}.java"/>
+        </plugin>
+
+        <!--controller-->
+        <!--<plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">-->
+            <!--<property name="targetProject" value="../frame-admin/src/main/java"/>-->
+            <!--<property name="targetPackage" value="${package}.admin.controller"/>-->
+            <!--<property name="templatePath" value="file:///D:${symbol_escape}mvnSpace${symbol_escape}base-api${symbol_escape}src${symbol_escape}main${symbol_escape}resources${symbol_escape}tpl${symbol_escape}controller.ftl"/>-->
+            <!--<property name="mapperSuffix" value="Controller"/>-->
+            <!--<property name="fileName" value="${symbol_dollar}{tableClass.shortClassName}${symbol_dollar}{mapperSuffix}.java"/>-->
+        <!--</plugin>-->
+
+        <!--mapper-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/java"/>
+            <property name="targetPackage" value="${package}.mapper"/>
+            <property name="templatePath" value="file:///D:${symbol_escape}mvnSpace${symbol_escape}base-api${symbol_escape}src${symbol_escape}main${symbol_escape}resources${symbol_escape}tpl${symbol_escape}mapper.ftl"/>
+            <property name="mapperSuffix" value="Mapper"/>
+            <property name="fileName" value="${symbol_dollar}{tableClass.shortClassName}${symbol_dollar}{mapperSuffix}.java"/>
+        </plugin>
+
+        <!--mapperXml-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/resources"/>
+            <property name="targetPackage" value="mapper"/>
+            <property name="templatePath" value="file:///D:${symbol_escape}mvnSpace${symbol_escape}base-api${symbol_escape}src${symbol_escape}main${symbol_escape}resources${symbol_escape}tpl${symbol_escape}mapperXML.ftl"/>
+            <property name="mapperSuffix" value="Mapper"/>
+            <property name="fileName" value="${symbol_dollar}{tableClass.shortClassName}${symbol_dollar}{mapperSuffix}.xml"/>
+        </plugin>
+
+        <!--api-->
+        <!--<plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">-->
+            <!--<property name="targetProject" value="../frame-admin/src/main/resources/admin/src/api"/>-->
+            <!--<property name="targetPackage" value=""/>-->
+            <!--<property name="templatePath" value="file:///D:${symbol_escape}mvnSpace${symbol_escape}base-api${symbol_escape}src${symbol_escape}main${symbol_escape}resources${symbol_escape}tpl${symbol_escape}api.ftl"/>-->
+            <!--<property name="mapperSuffix" value=""/>-->
+            <!--<property name="fileName" value="${symbol_dollar}{tableClass.variableName}${symbol_dollar}{mapperSuffix}.js"/>-->
+        <!--</plugin>-->
+
+        <!--vue-->
+        <!--<plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">-->
+            <!--<property name="targetProject" value="../frame-admin/src/main/resources/admin/src/busi"/>-->
+            <!--<property name="targetPackage" value=""/>-->
+            <!--<property name="templatePath" value="file:///D:${symbol_escape}mvnSpace${symbol_escape}base-api${symbol_escape}src${symbol_escape}main${symbol_escape}resources${symbol_escape}tpl${symbol_escape}vue.ftl"/>-->
+            <!--<property name="mapperSuffix" value=""/>-->
+            <!--<property name="fileName" value="${symbol_dollar}{tableClass.variableName}${symbol_dollar}{mapperSuffix}.vue"/>-->
+        <!--</plugin>-->
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://47.92.100.148:3306/fast4ward_dev"
+                        userId="root"
+                        password="Fblife@20171019">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="${package}.entity" targetProject="src/main/java"/>
+
+
+        <!--<sqlMapGenerator targetPackage="${package}.mapper"-->
+        <!--targetProject="src/main/resources"/>-->
+
+        <!--<javaClientGenerator targetPackage="${package}.mapper"-->
+        <!--targetProject="src/main/java"-->
+        <!--type="XMLMAPPER"/>-->
+        <!--<table tableName="used_product" schema="fast4ward_dev"></table>-->
+
+    </context>
+</generatorConfiguration>
